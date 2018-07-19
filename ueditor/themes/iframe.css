@@ -1,0 +1,39 @@
+/*可以在这里添加你自己的css*/
+/*ueditor_iframe里面的样式*/
+/*global*/
+/*oh是为了去掉html的滚动，另外html加overflow属性可让手机浏览器支持编辑区域滚动*/
+
+.view {
+	word-break: break-all;
+	word-wrap: break-word;
+	cursor: text;
+}
+p {
+	clear: both;
+}
+img {
+	*zoom: 1;
+	max-width: 100%;
+	*max-width: 96%;
+	height: auto !important;
+}
+iframe {
+	width: 301px !important;
+	border: 0;
+	background-color: none;
+}
+.video_iframe {
+	background-color: #000000;
+	width: 100% !important;
+	*width: 96% !important;
+	position: static;
+}
+blockquote {
+	margin: 0;
+	padding-left: 10px;
+	border-left: 3px solid #DBDBDB;
+}
+.embed-responsive-item{
+	height:375px;
+  	width:500px !important;
+}

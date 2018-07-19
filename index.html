@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>微信编辑器</title>
+  <script type="text/javascript" src="jquery-1.10.2.js"></script>
+  <script type="text/javascript" src="ueditor/ueditor.config.js"></script>
+  <script type="text/javascript" src="ueditor/ueditor.all.js"></script>
+
+  <script type="text/javascript" src="ueditor_custom.js">
+  </script>
+</head>
+
+<body>
+
+  <div class="container ueditor-content" style="width: 640px; margin: 0 auto">
+    <div id="js_editor" class="edui_editor_wrp"></div>
+  </div>
+  <p>
+    <button type="button" name="button" id="ok">确定</button>
+  </p>
+
+  <script type="text/javascript">
+    var editorId = "appmsg_editor";
+
+    var editor = UE.getEditor("js_editor", {
+      id: editorId,
+      wordCount: false,
+      elementPathEnabled: false
+    });
+
+    editor.addListener("catchremotesuccess", function() {
+      console.log("内容已上传完成");
+    });
+    editor.addListener("catchremoteerror", function() {
+      console.log("远程图片抓取失败");
+    });
+    editor.ready(function() {
+      var toolbars = editor.ui.toolbars;
+      $('#' + editor.ui.toolbars[0].id).addClass("edui-toolbar-primary");
+      $('#' + editor.ui.toolbars[1].id).addClass("edui-toobar-secondary");
+      $("#" + editorId + "_toolbarbox").addClass("show-edui-more");
+      /*for (var i = 0; i < toolbars.length; i++) {
+        var toolbar = toolbars[i];
+        var items = toolbar.items;
+        for (var j = 0; j < items.length; j++) {
+          if (items[j] instanceof UE.ui.Combox || items[j] instanceof UE.ui.SplitButton) {
+            $("#" + items[j].id + "_state").tooltip({
+              container: 'body'
+            });
+          } else if (items[j] instanceof UE.ui.Button || items[j] instanceof UE.ui.MenuButton) {
+            $("#" + items[j].id + "_body").tooltip({
+              container: 'body'
+            });
+          }
+        }
+      }*/
+	  
+    });
+
+    $("#ok").click(function() {
+	  var data = editor.setContent("123...");
+      //var data = editor.getContent();
+      //alert(data);
+    });
+  </script>
+</body>
+
+</html>
